@@ -1,12 +1,12 @@
 # RDS-Password
-Local_WLAN_Borrower
-Author:
-YEETBOY0330 (Original concept and code)
+# Local_WLAN_Borrower
+# Author:
+yeetboy0330 (Original concept and code)
 ChatGPT (OpenAI) (Refined PowerShell script and adjustments)
-Description:
+# Description:
 This script allows you to extract Wi-Fi passwords from a Windows machine and save them to a .txt file on your USB device. It is designed to work with the USB Rubber Ducky and uses the included PowerShell script (1.ps1) to pull the stored Wi-Fi credentials from the system.
 
-Setup:
+# Setup:
 1. Download and Prepare:
 Download the 1.ps1 script and place it in the root of your USB drive.
 In the inject.txt file (which is used by the USB Rubber Ducky), update the following:
@@ -22,6 +22,6 @@ Notes:
 PowerShell Execution Policy: The Rubber Ducky script uses the -ExecutionPolicy Bypass flag to allow the PowerShell script to run without being blocked by security settings. Make sure the system allows running unsigned PowerShell scripts.
 Windows Compatibility: This script is designed to work on Windows 10 and 11 systems.
 Privacy Notice: Use this script responsibly and with permission. Unauthorized access to systems is illegal.
-Credits:
-YEETBOY0330 for the original concept and code.
+# Credits:
+yeetboy0330 for the original concept and code.
 ChatGPT (OpenAI) for refining the PowerShell script and improving compatibility.
