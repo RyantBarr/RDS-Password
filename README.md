@@ -1,5 +1,4 @@
 # RDS-Password
-# Local_WLAN_Borrower
 # Author:
 yeetboy0330 (Original concept and code)
 ChatGPT (OpenAI) (Refined PowerShell script and adjustments)
